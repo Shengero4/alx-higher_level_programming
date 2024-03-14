@@ -6,21 +6,21 @@
  * Return: 0 if there is no cycle, 1 if there is a cycle
  */
 int check_cycle(listint_t *list)
-{
-    listint_t *slow = list;
-    listint_t *fast = list;
+	{
+	listint_t *slow = list;
+	listint_t *fast = list;
 
-    while (slow && fast && fast->next)
-    {
-        slow = slow->next;          // Move slow pointer one node
-        fast = fast->next->next;    // Move fast pointer two nodes
+	if (!list)
+		return (0);
 
-        // If the pointers meet, it indicates a cycle
-        if (slow == fast)
-            return (1);
-    }
+	while (slow && fast && fast->next)
+	{
+		slow = slow->next;
+		fast = fast->next->next;
+		if (slow == fast)
+			return (1);
+	}
 
-    // If we reach this point, there is no cycle
-    return (0);
+	return (0);
 }
 
